@@ -1,7 +1,5 @@
-'use client'
-
 import { Table } from '@mantine/core'
-import tariffRates, { TariffRate } from '@/config/rates.conf'
+import tariffRates, { TariffRate } from '@config/rates.conf'
 
 const TariffTable = () => (
   <Table striped highlightOnHover withBorder withColumnBorders>

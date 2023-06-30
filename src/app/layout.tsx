@@ -12,7 +12,7 @@ type RootLayoutProps = {
 
 const RootLayout = ({ children }: RootLayoutProps) => (
   <html lang="en">
-    <body>
+    <body suppressHydrationWarning={true}>
       <RootStyleRegistry>{children}</RootStyleRegistry>
     </body>
   </html>

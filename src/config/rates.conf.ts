@@ -7,7 +7,7 @@ export type TariffRate = {
 
 // Array of tariff rates defined as ranges with specific rates.
 const tariffRates: readonly TariffRate[] = [
-  { from: 0, to: 75, rate: 4.85 },
+  { from: 1, to: 75, rate: 4.85 },
   { from: 76, to: 200, rate: 6.63 },
   { from: 201, to: 300, rate: 6.95 },
   { from: 301, to: 400, rate: 7.34 },

@@ -1,6 +1,9 @@
 {
   "name": "electric-bill",
-  "version": "0.1.0",
+  "version": "0.2.0",
+  "author": "Md. Jobayer Al Mahmud Ahad <contact@jobayerahad.com> (www.jobayerahad.com)",
+  "description": "DPDC LT-A bill calculator",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,26 +12,28 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.0",
+    "@emotion/react": "^11.11.1",
     "@emotion/server": "^11.11.0",
-    "@mantine/core": "^6.0.13",
-    "@mantine/dates": "^6.0.13",
-    "@mantine/form": "^6.0.13",
-    "@mantine/hooks": "^6.0.13",
-    "@mantine/modals": "^6.0.13",
-    "@mantine/next": "^6.0.13",
-    "@mantine/notifications": "^6.0.13",
-    "@types/node": "20.2.5",
-    "@types/react": "18.2.7",
-    "@types/react-dom": "18.2.4",
-    "dayjs": "^1.11.7",
-    "eslint": "8.41.0",
-    "eslint-config-next": "13.4.4",
-    "next": "13.4.4",
+    "@mantine/core": "^6.0.15",
+    "@mantine/dates": "^6.0.15",
+    "@mantine/form": "^6.0.15",
+    "@mantine/hooks": "^6.0.15",
+    "@mantine/modals": "^6.0.15",
+    "@mantine/next": "^6.0.15",
+    "@mantine/notifications": "^6.0.15",
+    "dayjs": "^1.11.8",
+    "next": "13.4.7",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-icons": "^4.9.0",
-    "typescript": "5.0.4",
+    "react-icons": "^4.10.1",
     "yup": "^1.2.0"
+  },
+  "devDependencies": {
+    "eslint": "8.43.0",
+    "eslint-config-next": "13.4.7",
+    "@types/node": "20.3.2",
+    "@types/react": "18.2.14",
+    "@types/react-dom": "18.2.6",
+    "typescript": "5.1.6"
   }
 }

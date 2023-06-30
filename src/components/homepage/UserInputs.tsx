@@ -1,10 +1,9 @@
-'use client'
-
 import { Button, NumberInput, Paper, SimpleGrid, Text } from '@mantine/core'
 import { useForm, yupResolver } from '@mantine/form'
 import { CiCalculator2 as CalculationIcon } from 'react-icons/ci'
 import { BiReset as ResetIcon } from 'react-icons/bi'
-import schema from '@/utils/schema.utils'
+
+import schema from '@utils/schema.utils'
 
 type FormValues = {
   prevUnit: number

@@ -1,10 +1,9 @@
-'use client'
-
 import { Table } from '@mantine/core'
-import { calculateBill, calculateBaseBill, calculateTotal, calculateVat } from '@/utils/calculation.utils'
-import { formatDateTime } from '@/utils/dates.utils'
-import { demandChargeInTaka } from '@/config/rates.conf'
-import { formatAmount } from '@/utils/formatter.utls'
+
+import { demandChargeInTaka } from '@config/rates.conf'
+import { calculateBill, calculateBaseBill, calculateTotal, calculateVat } from '@utils/calculation.utils'
+import { formatDateTime } from '@utils/dates.utils'
+import { formatAmount } from '@utils/formatter.utls'
 
 type BillProps = {
   totalUnits: number
@@ -14,7 +13,7 @@ const Bill = ({ totalUnits }: BillProps) => {
   const billForUnits = calculateBill(totalUnits)
 
   return (
-    <Table striped highlightOnHover withBorder withColumnBorders mt="xl">
+    <Table striped highlightOnHover withBorder withColumnBorders>
       <tbody>
         <tr>
           <th>Date</th>

@@ -1,18 +1,44 @@
-import tariffRates, { demandChargeInTaka, vatRateInPercent } from '../config/rates.conf'
+import tariffRates, { TariffRate, demandChargeInTaka, vatRateInPercent } from '../config/rates.conf'
 
 export const calculateBill = (totalUnits: number): number => {
-  if (totalUnits <= 50) return totalUnits * 4.35
+  let unitsUsed = totalUnits
+  let totalBill = 0
 
-  const totalBill = tariffRates.reduce((bill, { from, to = totalUnits, rate }) => {
-    if (totalUnits >= from) {
-      const units = Math.min(totalUnits, to) - from
-      return bill + units * rate
+  for (let i = 0; i < tariffRates.length; i++) {
+    const { from, to = totalUnits, rate } = tariffRates[i]
+
+    if (unitsUsed > 0) {
+      const unitsInRange = Math.min(unitsUsed, to - from + 1)
+      totalBill += unitsInRange * rate
+      unitsUsed -= unitsInRange
     }
-
-    return bill
-  }, 0)
+  }
 
   return totalBill
+}
+
+export const calculateBillBreakdown = (totalUnits: number): TariffRate[] => {
+  let unitsUsed = totalUnits
+  const breakdown: TariffRate[] = []
+
+  for (let i = 0; i < tariffRates.length; i++) {
+    const { from, to = totalUnits, rate } = tariffRates[i]
+
+    if (unitsUsed > 0) {
+      const unitsInRange = Math.min(unitsUsed, to - from + 1)
+      const amount = parseFloat((unitsInRange * rate).toFixed(2))
+
+      breakdown.push({
+        from,
+        to: from + unitsInRange - 1,
+        rate: amount
+      })
+
+      unitsUsed -= unitsInRange
+    }
+  }
+
+  return breakdown
 }
 
 export const calculateBaseBill = (bill: number): number => bill + demandChargeInTaka
