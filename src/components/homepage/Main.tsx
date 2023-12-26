@@ -14,23 +14,23 @@ const MainLayout = () => {
   return (
     <Container mt="xl">
       <Grid gutter="xl">
-        <Grid.Col sm={7} orderSm={1}>
+        <Grid.Col span={{ base: 12, sm: 7 }} order={{ sm: 1 }}>
           <UserInputs setTotalUnits={setTotalUnits} />
         </Grid.Col>
 
         {totalUnits > 0 && (
           <>
-            <Grid.Col sm={7} orderSm={3}>
+            <Grid.Col span={{ base: 12, sm: 7 }} order={{ sm: 3 }}>
               <Bill totalUnits={totalUnits} />
             </Grid.Col>
 
-            <Grid.Col sm={5} orderSm={4}>
+            <Grid.Col span={{ base: 12, sm: 5 }} order={{ sm: 4 }}>
               <Breakdown totalUnits={totalUnits} />
             </Grid.Col>
           </>
         )}
 
-        <Grid.Col sm={5} orderSm={2}>
+        <Grid.Col span={{ base: 12, sm: 5 }} order={{ sm: 2 }}>
           <TariffTable />
         </Grid.Col>
       </Grid>

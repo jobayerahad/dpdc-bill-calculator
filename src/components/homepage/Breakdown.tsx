@@ -9,31 +9,31 @@ type BreakdownProps = {
 }
 
 const Breakdown = ({ totalUnits }: BreakdownProps) => (
-  <Table striped highlightOnHover withBorder withColumnBorders>
-    <thead>
-      <tr>
-        <th>Unit Calculation</th>
-        <th>Total Cost</th>
-      </tr>
-    </thead>
+  <Table striped highlightOnHover withTableBorder withColumnBorders>
+    <Table.Thead>
+      <Table.Tr>
+        <Table.Th>Unit Calculation</Table.Th>
+        <Table.Th>Total Cost</Table.Th>
+      </Table.Tr>
+    </Table.Thead>
 
-    <tbody>
+    <Table.Tbody>
       {calculateBillBreakdown(totalUnits).map(({ from, to = totalUnits, rate }: TariffRate, index) => (
-        <tr key={index}>
-          <td>
+        <Table.Tr key={index}>
+          <Table.Td>
             ({from} to {to}) units X {tariffRates[index].rate} BDT
-          </td>
-          <td>{rate} BDT</td>
-        </tr>
+          </Table.Td>
+          <Table.Td>{rate} BDT</Table.Td>
+        </Table.Tr>
       ))}
-    </tbody>
+    </Table.Tbody>
 
-    <tfoot>
-      <tr>
-        <th>Total</th>
-        <th>{formatAmount(calculateBill(totalUnits))}</th>
-      </tr>
-    </tfoot>
+    <Table.Tfoot>
+      <Table.Tr>
+        <Table.Th>Total</Table.Th>
+        <Table.Th>{formatAmount(calculateBill(totalUnits))}</Table.Th>
+      </Table.Tr>
+    </Table.Tfoot>
   </Table>
 )
 

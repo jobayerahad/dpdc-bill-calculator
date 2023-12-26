@@ -13,43 +13,43 @@ const Bill = ({ totalUnits }: BillProps) => {
   const billForUnits = calculateBill(totalUnits)
 
   return (
-    <Table striped highlightOnHover withBorder withColumnBorders>
-      <tbody>
-        <tr>
-          <th>Date</th>
-          <td>{formatDateTime(new Date())}</td>
-        </tr>
+    <Table striped highlightOnHover withTableBorder withColumnBorders>
+      <Table.Tbody>
+        <Table.Tr>
+          <Table.Th>Date</Table.Th>
+          <Table.Td>{formatDateTime(new Date())}</Table.Td>
+        </Table.Tr>
 
-        <tr>
-          <th>Unit Used</th>
-          <td>{totalUnits}</td>
-        </tr>
+        <Table.Tr>
+          <Table.Th>Unit Used</Table.Th>
+          <Table.Td>{totalUnits}</Table.Td>
+        </Table.Tr>
 
-        <tr>
-          <th>Used Unit Price</th>
-          <td>{formatAmount(billForUnits)}</td>
-        </tr>
+        <Table.Tr>
+          <Table.Th>Used Unit Price</Table.Th>
+          <Table.Td>{formatAmount(billForUnits)}</Table.Td>
+        </Table.Tr>
 
-        <tr>
-          <th>Demand Charge</th>
-          <td>{formatAmount(demandChargeInTaka)}</td>
-        </tr>
+        <Table.Tr>
+          <Table.Th>Demand Charge</Table.Th>
+          <Table.Td>{formatAmount(demandChargeInTaka)}</Table.Td>
+        </Table.Tr>
 
-        <tr>
-          <th>Principal Price</th>
-          <td>{formatAmount(calculateBaseBill(billForUnits))}</td>
-        </tr>
+        <Table.Tr>
+          <Table.Th>Principal Price</Table.Th>
+          <Table.Td>{formatAmount(calculateBaseBill(billForUnits))}</Table.Td>
+        </Table.Tr>
 
-        <tr>
-          <th>VAT</th>
-          <td>{formatAmount(calculateVat(billForUnits))}</td>
-        </tr>
+        <Table.Tr>
+          <Table.Th>VAT</Table.Th>
+          <Table.Td>{formatAmount(calculateVat(billForUnits))}</Table.Td>
+        </Table.Tr>
 
-        <tr>
-          <th>Total Bill</th>
-          <td>{formatAmount(calculateTotal(billForUnits))}</td>
-        </tr>
-      </tbody>
+        <Table.Tr>
+          <Table.Th>Total Bill</Table.Th>
+          <Table.Td>{formatAmount(calculateTotal(billForUnits))}</Table.Td>
+        </Table.Tr>
+      </Table.Tbody>
     </Table>
   )
 }

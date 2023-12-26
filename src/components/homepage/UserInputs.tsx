@@ -42,11 +42,11 @@ const UserInputs = ({ setTotalUnits }: UserInputsProps) => {
           <NumberInput label="Current Unit Reading" hideControls required {...getInputProps('currUnit')} />
 
           <SimpleGrid cols={2} mt="xs">
-            <Button type="submit" variant="gradient" leftIcon={<CalculationIcon size={18} />}>
+            <Button type="submit" variant="gradient" leftSection={<CalculationIcon size={18} />}>
               Calculate
             </Button>
 
-            <Button variant="outline" leftIcon={<ResetIcon size={18} />} onClick={resetHandler}>
+            <Button variant="outline" leftSection={<ResetIcon size={18} />} onClick={resetHandler}>
               Reset
             </Button>
           </SimpleGrid>

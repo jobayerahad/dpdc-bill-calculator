@@ -2,25 +2,25 @@ import { Table } from '@mantine/core'
 import tariffRates, { TariffRate } from '@config/rates.conf'
 
 const TariffTable = () => (
-  <Table striped highlightOnHover withBorder withColumnBorders>
-    <thead>
-      <tr>
-        <th>Unit Range</th>
-        <th>Unit Per Price</th>
-      </tr>
-    </thead>
+  <Table striped highlightOnHover withTableBorder withColumnBorders>
+    <Table.Thead>
+      <Table.Tr>
+        <Table.Th>Unit Range</Table.Th>
+        <Table.Th>Unit Per Price</Table.Th>
+      </Table.Tr>
+    </Table.Thead>
 
-    <tbody>
+    <Table.Tbody>
       {tariffRates.map(({ from, to, rate }: TariffRate, index: number) => (
-        <tr key={index}>
-          <td>
+        <Table.Tr key={index}>
+          <Table.Td>
             {from} unit(s) {to ? `to ${to} unit(s)` : 'and above'}
-          </td>
+          </Table.Td>
 
-          <td>{rate} BDT</td>
-        </tr>
+          <Table.Td>{rate} BDT</Table.Td>
+        </Table.Tr>
       ))}
-    </tbody>
+    </Table.Tbody>
   </Table>
 )
 

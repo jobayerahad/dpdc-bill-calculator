@@ -1,19 +1,48 @@
 import { ReactNode } from 'react'
-import RootStyleRegistry from './emotion'
+import type { Metadata } from 'next'
+import { MantineProvider, ColorSchemeScript } from '@mantine/core'
+import { Notifications } from '@mantine/notifications'
+import { Work_Sans, Lora } from 'next/font/google'
 
-export const metadata = {
+import '@mantine/core/styles.css'
+import '@mantine/dates/styles.css'
+import '@mantine/notifications/styles.css'
+import './globals.css'
+
+const work_sans = Work_Sans({
+  subsets: ['latin'],
+  variable: '--font-work-sans',
+  display: 'swap'
+})
+
+const lora = Lora({
+  subsets: ['latin'],
+  variable: '--font-lora',
+  display: 'swap'
+})
+
+export const metadata: Metadata = {
+  metadataBase: new URL('https://bill-calc.jobayerahad.com'),
   title: 'Electric Bill Calculator',
-  description: 'A user-friendly application to calculate your electricity bills'
+  description: 'A user-friendly application to calculate your electricity bills',
+  openGraph: {
+    title: 'Electric Bill Calculator',
+    description: 'A user-friendly application to calculate your electricity bills'
+  }
 }
 
-type RootLayoutProps = {
-  children: ReactNode
-}
+const RootLayout = ({ children }: { children: ReactNode }) => (
+  <html lang="en" className={`${work_sans.variable} ${lora.variable}`}>
+    <head>
+      <ColorSchemeScript defaultColorScheme="auto" />
+    </head>
 
-const RootLayout = ({ children }: RootLayoutProps) => (
-  <html lang="en">
-    <body suppressHydrationWarning={true}>
-      <RootStyleRegistry>{children}</RootStyleRegistry>
+    <body suppressHydrationWarning>
+      <MantineProvider defaultColorScheme="auto" classNamesPrefix="sq">
+        <Notifications />
+
+        {children}
+      </MantineProvider>
     </body>
   </html>
 )
