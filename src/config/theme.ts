@@ -14,11 +14,6 @@ export const theme: MantineThemeOverride = {
       defaultProps: {
         variant: 'gradient'
       }
-    },
-    Container: {
-      defaultProps: {
-        size: 'lg'
-      }
     }
   }
 }

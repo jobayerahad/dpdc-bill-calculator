@@ -1,40 +1,62 @@
-import { Table } from '@mantine/core'
+import { NumberFormatter, Paper, Table } from '@mantine/core'
 
 import tariffRates, { TariffRate } from '@config/rates.conf'
 import { calculateBill, calculateBillBreakdown } from '@utils/calculation.utils'
-import { formatAmount } from '@utils/formatter.utls'
 
-type BreakdownProps = {
-  totalUnits: number
-}
-
-const Breakdown = ({ totalUnits }: BreakdownProps) => (
-  <Table striped highlightOnHover withTableBorder withColumnBorders>
-    <Table.Thead>
-      <Table.Tr>
-        <Table.Th>Unit Calculation</Table.Th>
-        <Table.Th>Total Cost</Table.Th>
-      </Table.Tr>
-    </Table.Thead>
-
-    <Table.Tbody>
-      {calculateBillBreakdown(totalUnits).map(({ from, to = totalUnits, rate }: TariffRate, index) => (
-        <Table.Tr key={index}>
-          <Table.Td>
-            ({from} to {to}) units X {tariffRates[index].rate} BDT
-          </Table.Td>
-          <Table.Td>{rate} BDT</Table.Td>
+const Breakdown = ({ totalUnits }: { totalUnits: number }) => (
+  <Paper shadow="xs">
+    <Table striped highlightOnHover>
+      <Table.Thead>
+        <Table.Tr>
+          <Table.Th>Unit Calculation</Table.Th>
+          <Table.Th>Total Cost</Table.Th>
         </Table.Tr>
-      ))}
-    </Table.Tbody>
+      </Table.Thead>
 
-    <Table.Tfoot>
-      <Table.Tr>
-        <Table.Th>Total</Table.Th>
-        <Table.Th>{formatAmount(calculateBill(totalUnits))}</Table.Th>
-      </Table.Tr>
-    </Table.Tfoot>
-  </Table>
+      <Table.Tbody>
+        {calculateBillBreakdown(totalUnits).map(({ from, to = totalUnits, rate }: TariffRate, index) => (
+          <Table.Tr key={index}>
+            <Table.Td>
+              ({from} to {to}) units X{' '}
+              <NumberFormatter
+                value={tariffRates[index].rate}
+                thousandSeparator
+                thousandsGroupStyle="lakh"
+                suffix=" ৳"
+              />
+            </Table.Td>
+
+            <Table.Td>
+              <NumberFormatter
+                suffix=" ৳"
+                value={rate}
+                thousandSeparator
+                thousandsGroupStyle="lakh"
+                decimalScale={2}
+                fixedDecimalScale
+              />
+            </Table.Td>
+          </Table.Tr>
+        ))}
+      </Table.Tbody>
+
+      <Table.Tfoot>
+        <Table.Tr>
+          <Table.Th>Total</Table.Th>
+          <Table.Th>
+            <NumberFormatter
+              suffix=" ৳"
+              value={calculateBill(totalUnits)}
+              thousandSeparator
+              thousandsGroupStyle="lakh"
+              decimalScale={2}
+              fixedDecimalScale
+            />
+          </Table.Th>
+        </Table.Tr>
+      </Table.Tfoot>
+    </Table>
+  </Paper>
 )
 
 export default Breakdown

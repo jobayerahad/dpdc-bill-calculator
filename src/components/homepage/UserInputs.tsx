@@ -10,11 +10,11 @@ type FormValues = {
   currUnit: number
 }
 
-type UserInputsProps = {
+type Props = {
   setTotalUnits: (units: number) => void
 }
 
-const UserInputs = ({ setTotalUnits }: UserInputsProps) => {
+const UserInputs = ({ setTotalUnits }: Props) => {
   const { onSubmit, getInputProps, reset } = useForm<FormValues>({
     validate: yupResolver(schema),
     initialValues: {
