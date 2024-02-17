@@ -1,12 +1,5 @@
 import MainLayout from '@components/homepage/Main'
-import HomepageTitle from '@components/homepage/Title'
 
-const Home = () => (
-  <>
-    <HomepageTitle />
-
-    <MainLayout />
-  </>
-)
+const Home = () => <MainLayout />
 
 export default Home

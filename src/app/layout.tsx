@@ -9,6 +9,9 @@ import '@mantine/dates/styles.css'
 import '@mantine/notifications/styles.css'
 import './globals.css'
 
+import Structure from '@components/Structure'
+import { theme } from '@config/theme'
+
 const work_sans = Work_Sans({
   subsets: ['latin'],
   variable: '--font-work-sans',
@@ -38,10 +41,10 @@ const RootLayout = ({ children }: { children: ReactNode }) => (
     </head>
 
     <body suppressHydrationWarning>
-      <MantineProvider defaultColorScheme="auto" classNamesPrefix="sq">
+      <MantineProvider theme={theme} defaultColorScheme="auto" classNamesPrefix="sq">
         <Notifications />
 
-        {children}
+        <Structure>{children}</Structure>
       </MantineProvider>
     </body>
   </html>

@@ -30,8 +30,8 @@ const UserInputs = ({ setTotalUnits }: UserInputsProps) => {
   }
 
   return (
-    <Paper>
-      <Text color="dimmed" size="sm" mb="md">
+    <Paper shadow="xs" p="md">
+      <Text c="dimmed" size="sm" mb="md">
         Tariff: LT-A
       </Text>
 
