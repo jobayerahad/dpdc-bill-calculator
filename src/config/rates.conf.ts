@@ -27,7 +27,7 @@ const tariffRates: readonly TariffRate[] = [
 ]
 
 // Constant for the demand charge
-export const demandChargeInTaka: number = 175
+export const demandChargeInTaka: number = 210
 
 // VAT rate in percent
 export const vatRateInPercent: number = 5
