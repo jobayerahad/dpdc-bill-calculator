@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Container, Grid } from '@mantine/core'
+import { Grid } from '@mantine/core'
 
 import UserInputs from './UserInputs'
 import TariffTable from './Tariff'
@@ -12,8 +12,8 @@ const MainLayout = () => {
   const [totalUnits, setTotalUnits] = useState(0)
 
   return (
-    <Container mt="xl">
-      <Grid gutter="xl">
+    <>
+      <Grid gutter={{ base: 'md', md: 'lg' }}>
         <Grid.Col span={{ base: 12, sm: 7 }} order={{ sm: 1 }}>
           <UserInputs setTotalUnits={setTotalUnits} />
         </Grid.Col>
@@ -34,7 +34,7 @@ const MainLayout = () => {
           <TariffTable />
         </Grid.Col>
       </Grid>
-    </Container>
+    </>
   )
 }
 
