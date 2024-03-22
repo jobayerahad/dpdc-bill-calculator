@@ -18,7 +18,7 @@ const Structure = ({ children }: { children: ReactNode }) => {
 
   return (
     <Container mt="lg">
-      <Group justify="center">
+      <Group justify="center" mb="md">
         <Image src="/images/dpdc.png" alt="" height={60} width="auto" />
 
         <Title order={2} ta="center">
