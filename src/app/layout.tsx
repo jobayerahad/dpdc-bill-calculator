@@ -1,16 +1,13 @@
 import { ReactNode } from 'react'
 import type { Metadata } from 'next'
 import { MantineProvider, ColorSchemeScript } from '@mantine/core'
-import { Notifications } from '@mantine/notifications'
 import { Work_Sans, Lora } from 'next/font/google'
 
 import '@mantine/core/styles.css'
-import '@mantine/dates/styles.css'
-import '@mantine/notifications/styles.css'
 import './globals.css'
 
-import Structure from '@components/Structure'
 import { theme } from '@config/theme'
+import Structure from './structure'
 
 const work_sans = Work_Sans({
   subsets: ['latin'],
@@ -42,7 +39,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => (
 
     <body suppressHydrationWarning>
       <MantineProvider theme={theme} defaultColorScheme="auto" classNamesPrefix="sq">
-        <Notifications />
+
 
         <Structure>{children}</Structure>
       </MantineProvider>

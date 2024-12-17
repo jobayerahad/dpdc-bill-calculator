@@ -1,7 +1,13 @@
-import { MantineThemeOverride } from '@mantine/core'
+import { createTheme } from '@mantine/core'
 
-export const theme: MantineThemeOverride = {
+export const theme = createTheme({
   defaultRadius: 'md',
+  cursorType: 'pointer',
+  autoContrast: true,
+  luminanceThreshold: 0.45,
+
+  white: '#FDFDFD',
+  black: '#28282B',
 
   fontFamily: 'var(--font-work-sans)',
 
@@ -10,10 +16,21 @@ export const theme: MantineThemeOverride = {
   },
 
   components: {
+    Anchor: {
+      defaultProps: {
+        c: 'blue',
+        size: 'sm'
+      }
+    },
+    ActionIcon: {
+      defaultProps: {
+        variant: 'gradient'
+      }
+    },
     Button: {
       defaultProps: {
         variant: 'gradient'
       }
     }
   }
-}
+})

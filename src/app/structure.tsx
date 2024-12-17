@@ -1,6 +1,6 @@
 'use client'
 
-import { ReactNode } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 import {
   ActionIcon,
   Container,
@@ -13,8 +13,13 @@ import {
 import { BsMoon as DarkIcon, BsSun as LightIcon } from 'react-icons/bs'
 
 const Structure = ({ children }: { children: ReactNode }) => {
+  const [isClient, setIsClient] = useState(false)
   const { setColorScheme } = useMantineColorScheme()
   const computedColorScheme = useComputedColorScheme('light', { getInitialValueInEffect: true })
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   return (
     <Container mt="lg">
@@ -26,16 +31,18 @@ const Structure = ({ children }: { children: ReactNode }) => {
         </Title>
       </Group>
 
-      <ActionIcon
-        variant="light"
-        aria-label="color-theme"
-        onClick={() => setColorScheme(computedColorScheme === 'light' ? 'dark' : 'light')}
-        pos="fixed"
-        top="1rem"
-        right="1rem"
-      >
-        {computedColorScheme === 'light' ? <DarkIcon /> : <LightIcon />}
-      </ActionIcon>
+      {isClient && (
+        <ActionIcon
+          variant="light"
+          aria-label="color-theme"
+          onClick={() => setColorScheme(computedColorScheme === 'light' ? 'dark' : 'light')}
+          pos="fixed"
+          top="1rem"
+          right="1rem"
+        >
+          {computedColorScheme === 'light' ? <DarkIcon /> : <LightIcon />}
+        </ActionIcon>
+      )}
 
       {children}
     </Container>
